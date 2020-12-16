@@ -23,11 +23,24 @@ public class Colour {
 
     }
     public static boolean equalColours(Colour a, Colour b) {
-        if (a.type.equals(b.type)){
-            if (a.w == b.w){
-                if (a.x == b.x){
-                    if(a.y == b.y){
-                        if(a.z == b.z){
+        if (a.type == "CMYK") {
+            if (a.type.equals(b.type)) {
+                if (a.w == b.w) {
+                    if (a.x == b.x) {
+                        if (a.y == b.y) {
+                            if (a.z == b.z) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (a.type == "RGB") {
+            if (a.type.equals(b.type)) {
+                if (a.w == b.w) {
+                    if (a.x == b.x) {
+                        if (a.y == b.y) {
                             return true;
                         }
                     }
@@ -35,7 +48,20 @@ public class Colour {
             }
         }
         return false;
-
     }
-}
+
+
+    public Colour addColours(Colour a){
+        if (a.type == "RGB"){
+            if ((a.w+this.w)<= 255){
+                if ((a.x+this.x)<=255){
+                    if ((a.y+this.y)<= 255){
+                        Colour colour1 = new Colour("RGB",(a.w+this.w),(a.x+this.x),(a.y+this.y));
+                        return colour1;
+                    }
+                }
+            }
+        }return a;
+    }
+
 
